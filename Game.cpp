@@ -1,3 +1,5 @@
+//visos pozicijos daromos koordinaciu sistemoje, 0.f = kairys, virsutinis kampas.
+
 #include "Game.h"
 
 void Game::initVariables()
@@ -9,6 +11,7 @@ void Game::initWindow()
 {
 	this->videoMode = VideoMode(800, 600);
 	this->window = new RenderWindow(this->videoMode, "Zaidimas", Style::Close || Style::Titlebar);
+	this->window->setFramerateLimit(60);
 }
 
 //Konstruktoriai ir destruktoriai
@@ -48,6 +51,8 @@ void Game::pollEvents()
 void Game::update()
 {
 	this->pollEvents();
+
+	this->player.update(this->window);
 }
 
 void Game::render()
